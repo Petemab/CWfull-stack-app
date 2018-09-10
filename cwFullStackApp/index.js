@@ -1,17 +1,19 @@
 /** @format */
 
-import React from 'react';
-import {AppRegistry, View} from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import {AppRegistry} from 'react-native';
+import App from './App';
+import {name as cwFullStackApp} from './app.json';
 
-import NameList from './src/components/NameList';
-// import NameShow from './src/components/NameShow';
+AppRegistry.registerComponent(cwFullStackApp, () => App);
+Navigation.registerComponent('navigation.playground.WelcomeScreen', () => App);
 
-
-const App = () => (
-  <View>
-    <NameList />
-    {/* <NameShow /> */}
-  </View>
-);
-
-AppRegistry.registerComponent('cwFullStackApp', () => App);
+Navigation.events().registerAppLaunchedListener(() => {
+  Navigation.setRoot({
+    root: {
+      component: {
+        name: 'navigation.playground.WelcomeScreen'
+      }
+    }
+  });
+});
