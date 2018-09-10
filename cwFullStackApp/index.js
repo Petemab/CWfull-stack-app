@@ -3,14 +3,14 @@
 import React from 'react';
 import {AppRegistry, View} from 'react-native';
 
-import Index from './src/components/Index';
-import Show from './src/components/Show';
+import NameList from './src/components/NameList';
+// import NameShow from './src/components/NameShow';
 
 
 const App = () => (
   <View>
-    <Index />
-    <Show />
+    <NameList />
+    {/* <NameShow /> */}
   </View>
 );
 
