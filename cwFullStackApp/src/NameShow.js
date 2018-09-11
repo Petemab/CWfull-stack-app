@@ -1,19 +1,40 @@
 // Will show the details of the selected name
-import React, { Component } from 'react';
-import { View, Text, Image} from 'react-native';
+import React from 'react';
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet
+} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 
-
-class NameShow extends Component{
-
-  render(){
-    return(
-      <View>
-        <Image />
-        <Text>Name</Text>
-        <Text>Rating</Text>
+export default class NameShow extends React.Component {
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: 'NameShow'
+        }
+      }
+    };
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Detail View</Text>
+        <Button
+          onPress={() => Navigation.pop(this.props.componentId)}
+          title="Back"
+        />
       </View>
     );
   }
 }
 
-export default NameShow;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});

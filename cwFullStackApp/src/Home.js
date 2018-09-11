@@ -15,16 +15,18 @@ class Home extends Component{
   }
 
   render(){
+    console.log('props', this.props.componentId);
     return (
       <View style={styles.container}>
-        <Text>Welcome to my CW full stack RN App</Text>
+        <Text>A Full Stack Project for CW by Pete Bennett</Text>
+        <Text>Using React Native, Node.js, Express and Firebase</Text>
         <Button
           onPress={() => {
             Navigation.push(this.props.componentId, {
               component: {
                 name: 'NameList'
               }
-            });
+            }, console.log('props2', this.props));
           }}
           title="Click here to start"
         />

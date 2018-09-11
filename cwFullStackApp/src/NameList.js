@@ -2,7 +2,8 @@
 
 // will make axios request to backend and fetch list of names
 import React, { Component } from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, Text, Button } from 'react-native';
+import {Navigation} from 'react-native-navigation';
 
 
 class NameList extends Component {
@@ -24,6 +25,36 @@ class NameList extends Component {
       dob: '15/12/1990',
       rating: '666',
       image: 'https://www.fillmurray.com/200/200'
+    }, {
+      name: 'Danny Dyer',
+      dob: '20/05/1978',
+      rating: '657',
+      image: 'https://www.fillmurray.com/200/300'
+    }, {
+      name: 'Eddie Edwards',
+      dob: '07/09/1988',
+      rating: '555',
+      image: 'https://www.fillmurray.com/200/200'
+    }, {
+      name: 'Freddie Flintoff',
+      dob: '15/12/1990',
+      rating: '666',
+      image: 'https://www.fillmurray.com/200/200'
+    }, {
+      name: 'Greg Gregory',
+      dob: '20/05/1978',
+      rating: '657',
+      image: 'https://www.fillmurray.com/200/300'
+    }, {
+      name: 'Harry Hill',
+      dob: '07/09/1988',
+      rating: '555',
+      image: 'https://www.fillmurray.com/200/200'
+    }, {
+      name: 'Ian Innes',
+      dob: '15/12/1990',
+      rating: '666',
+      image: 'https://www.fillmurray.com/200/200'
     }
   ]};
 
@@ -34,7 +65,18 @@ class NameList extends Component {
   renderList() {
     return this.state.people.map(person =>
       <View style={styles.viewStyle} key={ person.name  }>
-        <Text style={styles.textStyle}>{ person.name }</Text>
+        <Button style={styles.textStyle}
+          onPress={() => {
+            Navigation.push(this.props.componentId, {
+              component: {
+                name: 'NameShow'
+              }
+            });
+          }}
+          title={person.name}
+        >
+          {/* <Text style={styles.textStyle}>{ person.name }</Text> */}
+        </Button>
       </View>
     );
   }
