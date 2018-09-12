@@ -8,7 +8,7 @@ import {Navigation} from 'react-native-navigation';
 
 class NameList extends Component {
 
-
+// Initially I have set state using hard coded dummy data here
   state = { people: [
     {
       name: 'Adam Ant',
@@ -57,19 +57,32 @@ class NameList extends Component {
       image: 'https://www.fillmurray.com/200/200'
     }
   ]};
+  //the top bar
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: 'People'
+        }
+      }
+    };
+  }
 
 
 
   // add axios request here to fetch the data from api when back end ready
-
+  //I put each of the names in a buttom which triggered the Navigation.push
+  // function to move to the detail screen
   renderList() {
     return this.state.people.map(person =>
       <View style={styles.viewStyle} key={ person.name  }>
+
         <Button style={styles.textStyle}
           onPress={() => {
             Navigation.push(this.props.componentId, {
               component: {
-                name: 'NameShow'
+                name: 'NameShow',
+                passProps: { person }
               }
             });
           }}

@@ -6,6 +6,7 @@
  * @flow
  */
 
+// Pretty sure the below code is now redundant
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';

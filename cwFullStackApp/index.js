@@ -1,9 +1,14 @@
 /** @format */
 
+// This is no, I believe, the entry point to the app. Registering
+// React Native Navigation and the screens and setting a root file
+// of Initializing - Atempted to set root file to home,
+// but it didn't work
 
 import {Navigation} from 'react-native-navigation';
 import {registerScreens} from './src/screens';
 
+// This runs function that registers all the screens I've created in my SRC file
 registerScreens();
 
 Navigation.events().registerAppLaunchedListener(() => {
@@ -16,6 +21,7 @@ Navigation.events().registerAppLaunchedListener(() => {
   });
 });
 
+// Early attempt to get Navigation workking from the RNN docs below.
 
 // import { Navigation } from 'react-native-navigation';
 // import {AppRegistry} from 'react-native';

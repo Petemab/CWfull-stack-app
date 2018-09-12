@@ -7,6 +7,9 @@ import {
 
 import { goHome } from './navigation';
 
+// I don't fully understand why this initializing screen is relvant,
+// but it wasn't working until I found an example that used this and added it.
+
 
 export default class Initialising extends React.Component {
   async componentDidMount() {
