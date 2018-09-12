@@ -4,9 +4,15 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start:server": "nodemon",
     "test": "jest"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "firebase-admin": "^6.0.0",
+    "nodemon": "^1.18.4",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-navigation": "^2.0.2538"

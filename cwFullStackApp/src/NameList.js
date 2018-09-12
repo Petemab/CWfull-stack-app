@@ -11,7 +11,7 @@ class NameList extends Component {
 // Initially I have set state using hard coded dummy data here
   state = { people: [
     {
-      name: 'Adam Ant',
+      name: 'Alan Ant',
       dob: '20/05/1978',
       rating: '657',
       image: 'https://www.fillmurray.com/200/300'
