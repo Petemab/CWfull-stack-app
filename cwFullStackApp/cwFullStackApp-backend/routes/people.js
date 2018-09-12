@@ -26,7 +26,7 @@ const peopleCollection = db.collection('people');
 //this should get all the people
 router.get('/people',(req, res , next) =>{
 
-  let allPeople = [];
+ let allPeople = [];
 
   peopleCollection.get()
     .then(snapshot => {
