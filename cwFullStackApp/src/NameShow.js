@@ -3,14 +3,14 @@ import React from 'react';
 import {
   View,
   Text,
-  // Button,
+  Button,
   Image,
   StyleSheet
 } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import Card from './components/Card';
 import CardSection from './components/CardSection';
-import EditButton from './components/Edit';
+import BigButton from './components/BigButton';
 
 export default class NameShow extends React.Component {
   static get options() {
@@ -63,7 +63,9 @@ export default class NameShow extends React.Component {
           </View>
         </CardSection>
         <CardSection>
-          <EditButton />
+          <BigButton>
+            Edit
+          </BigButton>
         </CardSection>
       </Card>
     );

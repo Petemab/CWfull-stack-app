@@ -1,15 +1,18 @@
+//do i need this?
+
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-const Button = ({ onPress, children }) => {
-  console.log('button', children);
+const BigButton = () => {
+  // console.log('button', children);
 
   const { buttonStyle, textStyle } = styles;
 
   return (
-    <TouchableOpacity onPress={onPress}style={buttonStyle}>
+    <TouchableOpacity style={buttonStyle}>
       <Text style={textStyle}>
-        {children}
+        Edit!
+        {/* {children} */}
       </Text>
     </TouchableOpacity>
   );
@@ -36,4 +39,4 @@ const styles = {
   }
 };
 
-export default Button;
+export default BigButton;

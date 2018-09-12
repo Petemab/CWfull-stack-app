@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import {Navigation} from 'react-native-navigation';
+import BigButton from './components/BigButton';
 
 // A fairly basic Home Screen. A tap on the button will Naviagte to the listview
 
@@ -32,6 +33,7 @@ class Home extends Component{
           }}
           title="Tap Here To Start"
         />
+
       </View>
     );
   }
