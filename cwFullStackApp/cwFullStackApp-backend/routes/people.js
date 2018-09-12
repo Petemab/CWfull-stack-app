@@ -5,6 +5,10 @@ const router = express.Router();
 
 const admin = require('firebase-admin');
 
+const firestore = new Firestore();
+const settings = {timestampsInSnapshots: true};
+firestore.settings(settings)
+
 // hidden the massive json file in process env
 const serviceAccount = require(process.env.FIRESTORE_SERVICE_ACCOUNT_KEY_PATH);
 // process.env.FIRESTORE_SERVICE_ACCOUNT_KEY_PATH
