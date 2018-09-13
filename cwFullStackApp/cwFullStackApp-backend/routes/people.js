@@ -20,6 +20,8 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
+db.settings({ timestampsInSnapshots: true });
+
 const peopleCollection = db.collection('people');
 
 
@@ -37,14 +39,14 @@ router.get('/people',(req, res , next) =>{
           'peopleData': doc.data()
         });
       });
-      //respond with the array created
-      //as json
-      // res.json({
-      //   'statusCode': '200',
-      //   'statusReponse': 'Ok',
-      //   'message': 'All the people',
-      //   'data': allPeople
-      // });
+      // respond with the array created
+      // as json
+      res.json({
+        'statusCode': '200',
+        'statusReponse': 'Ok',
+        'message': 'All the people',
+        'data': allPeople
+      });
     })
     .catch(err => {
       console.log('Error getting documents', err);

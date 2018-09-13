@@ -63,7 +63,10 @@ class NameList extends Component {
 
   componentWillMount(){
     axios.get('/api/people')
-      .then(res => this.setState({ people: res.data }, () => console.log(this.state)));
+      .then(res => this.setState({ people: res.data }, () => console.log(this.state)))
+      .catch(error => {
+        console.log(error);
+      });
     // .catch(err => console.log(err));
   }
 
