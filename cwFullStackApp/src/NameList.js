@@ -59,17 +59,6 @@ class NameList extends Component {
     // }
   ]};
   //the top bar
-
-
-  componentWillMount(){
-    axios.get('/api/people')
-      .then(res => this.setState({ people: res.data }, () => console.log(this.state)))
-      .catch(error => {
-        console.log(error);
-      });
-    // .catch(err => console.log(err));
-  }
-
   static get options() {
     return {
       topBar: {
@@ -79,6 +68,23 @@ class NameList extends Component {
       }
     };
   }
+  //
+  componentDidMount(){
+    axios.get('/api/people')
+      .then(res => res.json())
+      .then(people => this.setState({ people}))
+
+      .catch(function (err) {
+        return err;
+      });
+      // .catch(error => {
+      //   console.log(error);
+      // });
+
+    // .catch(err => console.log(err));
+  }
+
+
 
   // callApi = async () => {
   //   const response = await fetch('/api/people');
@@ -94,33 +100,37 @@ class NameList extends Component {
   // add axios request here to fetch the data from api when back end ready
   //I put each of the names in a buttom which triggered the Navigation.push
   // function to move to the detail screen
-  renderList() {
-    return this.state.people.map(person =>
-      <View style={styles.viewStyle} key={ person.name  }>
 
-        <Button style={styles.textStyle}
-          onPress={() => {
-            Navigation.push(this.props.componentId, {
-              component: {
-                name: 'NameShow',
-                passProps: { person }
-              }
-            });
-          }}
-          title='button'
-        >
-          {/* <Text style={styles.textStyle}>{ person.name }</Text> */}
-        </Button>
-      </View>
-    );
-  }
+  // renderList() {
+  //   console.log('render', this.state);
+  //   return this.state.people.map(person =>
+  //     <View style={styles.viewStyle} key={ person.name  }>
+  //
+  //       <Button style={styles.textStyle}
+  //         onPress={() => {
+  //           Navigation.push(this.props.componentId, {
+  //             component: {
+  //               name: 'NameShow',
+  //               passProps: { person }
+  //             }
+  //           });
+  //         }}
+  //         title='button'
+  //       >
+  //         {/* <Text style={styles.textStyle}>{ person.name }</Text> */}
+  //       </Button>
+  //     </View>
+  //   );
+  // }
+
 
 
   render(){
-    // console.log(this.state);
+    console.log(this.state);
     return(
       <ScrollView>
-        {this.renderList()}
+        <Text>Hello</Text>
+        {/* {this.renderList()} */}
       </ScrollView>
     );
   }

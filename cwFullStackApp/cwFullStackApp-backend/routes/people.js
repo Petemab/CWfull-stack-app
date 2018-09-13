@@ -28,7 +28,7 @@ const peopleCollection = db.collection('people');
 //this should get all the people
 router.get('/people',(req, res , next) =>{
 
- let allPeople = [];
+ const allPeople = [];
 
   peopleCollection.get()
     .then(snapshot => {
@@ -36,29 +36,22 @@ router.get('/people',(req, res , next) =>{
       snapshot.forEach(doc => {
         allPeople.push({
           'docID': doc.id,
-          'peopleData': doc.data()
+          'personData': doc.data()
         });
       });
       // respond with the array created
       // as json
-      res.json({
-        'statusCode': '200',
-        'statusReponse': 'Ok',
-        'message': 'All the people',
-        'data': allPeople
-      });
+      res.json(
+        allPeople
+      );
     })
-    .catch(err => {
-      console.log('Error getting documents', err);
-    });
+    .catch(next);
 });
 
 //this should get a single user by id
 router.get('/people/:id', (req, res, next) =>{
 
-  let reqId = req.params.id;
-
-  peopleCollection.doc(reqId).get()
+  peopleCollection.doc(req.params.id).get()
     .then(doc=>{
       if(doc.exists){
         //if the data exists in the database
@@ -76,10 +69,8 @@ router.get('/people/:id', (req, res, next) =>{
         });
       }
 
-    }).catch(err=>{
-      console.log(err);
-
-    });
+    })
+    .catch(next);
 });
 
 module.exports = router;
