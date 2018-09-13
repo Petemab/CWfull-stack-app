@@ -11,7 +11,7 @@ const admin = require('firebase-admin');
 // firestore.settings(settings)
 
 // hidden the massive json file in process env
-const serviceAccount = require(process.env.FIRESTORE_SERVICE_ACCOUNT_KEY_PATH);
+const serviceAccount = require('../tryingtohide');
 // process.env.FIRESTORE_SERVICE_ACCOUNT_KEY_PATH
 
 admin.initializeApp({
@@ -39,12 +39,12 @@ router.get('/people',(req, res , next) =>{
       });
       //respond with the array created
       //as json
-      res.json({
-        'statusCode': '200',
-        'statusReponse': 'Ok',
-        'message': 'All the people',
-        'data': allPeople
-      });
+      // res.json({
+      //   'statusCode': '200',
+      //   'statusReponse': 'Ok',
+      //   'message': 'All the people',
+      //   'data': allPeople
+      // });
     })
     .catch(err => {
       console.log('Error getting documents', err);

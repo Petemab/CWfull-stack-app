@@ -13,6 +13,6 @@ app.use(bodyParser.json());
 app.use('/api/', people);
 
 //---server listener
-app.listen(3000, ()=>{
+app.listen(port, () => {
   console.log('Server is up and running on localhost:3000');
 });
