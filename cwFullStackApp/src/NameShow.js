@@ -39,8 +39,10 @@ export default class NameShow extends React.Component {
     console.log('new date', aDate);
     const timeBetween = now - aDate.getTime();
     console.log(timeBetween);
-    // const age = 
-    // console.log(age);
+    const age = Math.floor(timeBetween / 1000 / 60 / 60 / 24 / 365);
+    // 24 * 60 * 60 * 1000,
+    // const age =
+    console.log(age);
   }
 
 
