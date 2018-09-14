@@ -23,31 +23,52 @@ export default class NameShow extends React.Component {
     };
   }
 
-//   calculateAge(){
-//     const splitDob = this.props.dob.split('/');
-//     return console.log('splitDob ---->', splitDob);
-// //     const bSplit = b.date.split('/');
-// // // I then created two new dates using the three elements in the resulting arrays.
-// //     const aDate = new Date(aSplit[2], aSplit[1] -1, aSplit[0]);
-//   }
 
-  componentDidMount(){
+  findAge(){
     const now = Date.now();
     const splitDob = this.props.person.personData.dob.split('/');
-    console.log('splitDob ---->', splitDob);
+    // console.log('splitDob ---->', splitDob);
     const aDate = new Date(splitDob[2], splitDob[1] -1, splitDob[0]);
-    console.log('new date', aDate);
+    // console.log('new date', aDate);
     const timeBetween = now - aDate.getTime();
-    console.log(timeBetween);
+    // console.log(timeBetween);
     const age = Math.floor(timeBetween / 1000 / 60 / 60 / 24 / 365);
-    // 24 * 60 * 60 * 1000,
-    // const age =
-    console.log(age);
+    return age;
+  }
+
+  isLeap(year) {
+    if (year % 100 === 0 && year % 100 === 0 && year % 4 === 0) {
+      console.log('true! is a leap year');
+      return true;
+    } else {
+      console.log('False! is not a leap year');
+      return false;
+    }
+  }
+
+  untilNextBirthday(){
+    const now = Date.now();
+    const year = new Date();
+    const nextYear = year.getFullYear() +1;
+    const splitDob = this.props.person.personData.dob.split('/');
+    // console.log('splitDob ---->', splitDob);
+    const nextBirthday = new Date(nextYear, splitDob[1] -1, splitDob[0]);
+    console.log(nextBirthday.getFullYear());
+    if(nextBirthday > 1 && this.isLeap(nextBirthday.getFullYear()) === true)
+    {
+      console.log('birthday after feb and a leap year');
+      // add an extra day if next birthday is
+      const timeBetween = (nextBirthday.getTime() - now) + 86400000;
+      return timeBetween;
+    } else {
+      const timeBetween = nextBirthday.getTime() - now;
+      return timeBetween;
+    }
+
   }
 
 
   render() {
-
     console.log(this.props);
     const { image, name, dob, rating } = this.props.person.personData;
     const {
@@ -78,8 +99,8 @@ export default class NameShow extends React.Component {
         </CardSection>
         <CardSection>
           <View style={containerStyle}>
-            <Text style={ageStyle}>{dob}</Text>
-            <Text style={birthdayStyle}> x months and x days until next birthday</Text>
+            <Text style={ageStyle}>{this.findAge()} years old</Text>
+            <Text style={birthdayStyle}> {this.untilNextBirthday()} x months and x days until next birthday</Text>
           </View>
         </CardSection>
         <CardSection>
