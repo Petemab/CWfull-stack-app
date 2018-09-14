@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import BigButton from './components/BigButton';
-import axios from 'axios';
+
 
 // A fairly basic Home Screen. A tap on the button will Naviagte to the listview
 
@@ -21,15 +21,6 @@ class Home extends Component{
     };
   }
 
-
-  // attempt to add here instead of list.
-  // componentDidMount(){
-  //   axios.get('/api/people')
-  //     .then(res => this.setState({ people: res.data }, () => console.log(this.state)))
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
 
   render(){
     console.log('props', this.props.componentId);

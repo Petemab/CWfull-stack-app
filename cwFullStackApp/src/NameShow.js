@@ -23,27 +23,50 @@ export default class NameShow extends React.Component {
     };
   }
 
+//   calculateAge(){
+//     const splitDob = this.props.dob.split('/');
+//     return console.log('splitDob ---->', splitDob);
+// //     const bSplit = b.date.split('/');
+// // // I then created two new dates using the three elements in the resulting arrays.
+// //     const aDate = new Date(aSplit[2], aSplit[1] -1, aSplit[0]);
+//   }
+
+  componentDidMount(){
+    const now = Date.now();
+    const splitDob = this.props.person.personData.dob.split('/');
+    console.log('splitDob ---->', splitDob);
+    const aDate = new Date(splitDob[2], splitDob[1] -1, splitDob[0]);
+    console.log('new date', aDate);
+    const timeBetween = now - aDate.getTime();
+    console.log(timeBetween);
+    // const age = 
+    // console.log(age);
+  }
 
 
   render() {
+
     console.log(this.props);
-    const { image, name, dob, rating } = this.props.person;
+    const { image, name, dob, rating } = this.props.person.personData;
     const {
       containerStyle,
       imageStyle,
       nameStyle,
       ageStyle,
       birthdayStyle,
-      ratingStyle
+      ratingStyle,
+      imageContainerStyle
     } = styles;
     return (
       <Card>
         <CardSection>
           <View style={containerStyle}>
-            <Image
-              style={imageStyle}
-              source={{ uri: image }}
-            />
+            <View style={imageContainerStyle}>
+              <Image
+                style={imageStyle}
+                source={{ uri: image }}
+              />
+            </View>
           </View>
         </CardSection>
         <CardSection>
@@ -79,13 +102,18 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   imageStyle: {
+    margin: 5,
     height: 200,
     width: 200,
-    marginTop: 20,
-    marginBottom: 20,
-    borderRadius: 100,
+    borderRadius: 100
+  },
+  imageContainerStyle: {
+    margin: 20,
+    height: 212,
+    width: 212,
+    borderRadius: 106,
     borderWidth: 1,
-    borderColor: '#ddd'
+    borderColor: '#808080'
   },
   nameStyle: {
     fontSize: 30,
