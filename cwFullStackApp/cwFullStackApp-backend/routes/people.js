@@ -56,14 +56,14 @@ router.get('/people/:id', (req, res, next) =>{
       if(doc.exists){
         //if the data exists in the database
         res.json({
-          'statusCode': '200',
-          'statusReponse': 'Ok',
+          'statusCode': 200,
+          'statusReponse': 'OK',
           'message': 'Person found',
           'personData': doc.data()
         });
       }else{
         res.json({
-          'statusCode': '404',
+          'statusCode': 404,
           'statusReponse': 'Not found',
           'message': 'Person not found'
         });

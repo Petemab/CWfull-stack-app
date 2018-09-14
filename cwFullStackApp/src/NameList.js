@@ -71,11 +71,10 @@ class NameList extends Component {
   //
   componentDidMount(){
     axios.get('/api/people')
-      .then(res => res.json())
-      .then(people => this.setState({ people}))
-
-      .catch(function (err) {
-        return err;
+      .then(res => console.log('res ----->', res))
+      // .then(res => this.setState({ people: res.data }, () => console.log(this.state)))
+      .catch(error => {
+        console.log('in error', error);
       });
       // .catch(error => {
       //   console.log(error);

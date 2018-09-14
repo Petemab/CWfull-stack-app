@@ -10,7 +10,7 @@ const people = require('./routes/people');
 // app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
-app.use('/api/', people);
+app.use('/api', people);
 
 //---server listener
 app.listen(port, () => {
