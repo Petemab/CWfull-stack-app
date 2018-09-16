@@ -12,8 +12,18 @@ class RatingSection extends Component {
 
   toggleEditMode = () => {
     this.setState({ editMode: true});
-    console.log(this.state.editMode);
+    console.log(this.state.rating);
   }
+
+  // incrementRating = () => {
+  //   this.setState({ rating: this.state.rating + 1 });
+  // }
+  decreaseRating = () => {
+    this.setState({ rating: this.state.rating - 1 });
+  }
+
+
+
 
   render() {
 
@@ -42,15 +52,26 @@ class RatingSection extends Component {
       return (
         <View>
           <View style={styles.ratingBox}>
-            <Text style={styles.ratingTextStyle}>EDIT </Text>
+            <Text style={styles.ratingTextStyle}>Rating:   </Text>
+            <TouchableOpacity
+              onPress={this.decreaseRating()}>
+              <Text style={styles.editButtons}> -    </Text>
+            </TouchableOpacity>
             <Text style={styles.ratingTextStyle}>{this.state.rating}</Text>
+            <TouchableOpacity>
+              <Text style={styles.editButtons}>    + </Text>
+            </TouchableOpacity>
           </View>
-          <View>
-            <TouchableOpacity style={styles.buttonStyle}
-              onPress={ this.toggleEditMode }
+          <View style={styles.editButtonsView}>
+            <TouchableOpacity >
+              <View style={styles.cancelButton}>
+                <Text style={styles.buttonTextStyle}>Cancel</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
             >
-              <View >
-                <Text style={styles.buttonTextStyle}>Edit</Text>
+              <View style={styles.saveButton}>
+                <Text style={styles.buttonTextStyle}>Save</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -91,15 +112,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center'
   },
-  ratingIncDec: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    textAlignVertical: 'center',
-    color: '#000000'
-  },
-  ratingButtons: {
+  editButtonsView: {
     flexDirection: 'row',
     justifyContent: 'center'
+  },
+  editButtons: {
+    fontSize: 20,
+    fontWeight: '800',
+    marginBottom: 5,
+    alignItems: 'center'
   }
 });
 
