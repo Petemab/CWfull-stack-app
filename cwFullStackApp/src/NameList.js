@@ -84,11 +84,6 @@ class NameList extends Component {
 
 
 
-
-
-
-
-
   //I put each of the names in a buttom which triggered the Navigation.push
   // function to move to the detail screen
 

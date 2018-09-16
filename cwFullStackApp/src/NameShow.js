@@ -10,7 +10,7 @@ import {
 import {Navigation} from 'react-native-navigation';
 import Card from './components/Card';
 import CardSection from './components/CardSection';
-import BigButton from './components/BigButton';
+import RatingSection from './components/RatingSection';
 
 export default class NameShow extends React.Component {
   static get options() {
@@ -136,7 +136,7 @@ export default class NameShow extends React.Component {
       imageContainerStyle
     } = styles;
     return (
-      <View>
+
       <Card>
         <CardSection>
           <View style={containerStyle}>
@@ -159,19 +159,15 @@ export default class NameShow extends React.Component {
             <Text style={birthdayStyle}> {this.untilNextBirthday()}</Text>
           </View>
         </CardSection>
-
         <CardSection>
           <View style={containerStyle}>
-            <Text style={ratingStyle}>Rating: {rating}</Text>
+            <RatingSection
+              rating={rating}
+            />
           </View>
         </CardSection>
-        <CardSection>
-          <BigButton>
-            Edit
-          </BigButton>
-        </CardSection>
       </Card>
-      </View>
+
     );
   }
 }
@@ -182,7 +178,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-
   imageStyle: {
     margin: 5,
     height: 200,
@@ -211,10 +206,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#808080',
     marginBottom: 20
-  },
-  ratingStyle: {
-    fontSize: 18,
-    fontWeight: '500'
   }
 });
 
