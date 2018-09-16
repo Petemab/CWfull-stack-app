@@ -77,7 +77,7 @@ class NameList extends Component {
       // .then(res => console.log('res ----->', res))
       .then(res => this.setState({ people: res.data }), () => console.log(this.state))
       .catch(error => {
-        console.log('in error', error);
+        console.log('in error------>', error);
       });
 
   }

@@ -46,31 +46,86 @@ export default class NameShow extends React.Component {
     }
   }
 
-  untilNextBirthday(){
-    const now = Date.now();
-    const year = new Date();
-    const nextYear = year.getFullYear() +1;
-    const splitDob = this.props.person.personData.dob.split('/');
-    // console.log('splitDob ---->', splitDob);
-    const nextBirthday = new Date(nextYear, splitDob[1] -1, splitDob[0]);
-    console.log(nextBirthday.getFullYear());
-    if(nextBirthday > 1 && this.isLeap(nextBirthday.getFullYear()) === true)
-    {
-      console.log('birthday after feb and a leap year');
-      // add an extra day if next birthday is
-      const timeBetween = (nextBirthday.getTime() - now) + 86400000;
-      return timeBetween;
+  monthLength(month, year){
+    if (month === 0 || month === 2 || month === 4 || month === 6 || month === 7 || month === 9 || month === 11){
+      return 31;
+    } else if (month === 3 || month === 5 || month === 8 ){
+      return 30;
+    } else if (month === 1 && this.isLeap(year) === true){
+      return 29;
     } else {
-      const timeBetween = nextBirthday.getTime() - now;
-      return timeBetween;
+      return 28;
     }
+  }
+
+  untilNextBirthday(){
+    const now = new Date;
+    const birthday = new Date;
+    const nowYear = now.getFullYear();
+    const nowMonth = now.getMonth();
+    const nowDay = now.getDate();
+    // console.log('nowYear --->', nowYear);
+    // console.log('nowMonth --->', nowMonth);
+    // console.log('nowDay --->', nowDay);
+    const splitDob = this.props.person.personData.dob.split('/');
+    const splitMonth = splitDob[1] -1;
+    birthday.setDate(splitDob[0]);
+    birthday.setMonth(splitMonth);
+    if (birthday < now) {
+      birthday.setFullYear(birthday.getFullYear()+1);
+    }
+    console.log(`${this.props.person.personData.name}'s birthday is`, birthday);
+    let bDayMonth = birthday.getMonth();
+    let bDayDay = birthday.getDate();
+    let bDayYear = birthday.getFullYear();
+    // console.log(bDayMonth, bDayDay, bDayYear);
+    let daysToEndOfThisMonth = this.monthLength(nowMonth,nowYear) - nowDay;
+    // console.log(daysToEndOfThisMonth);
+    if (bDayDay - nowDay < 0) {
+      bDayMonth = bDayMonth - 1;
+      bDayDay = bDayDay + this.monthLength(bDayMonth,bDayYear);
+    }
+    let daysDiff = bDayDay - nowDay;
+    // console.log('daysDiff', daysDiff);
+    if(bDayMonth - nowMonth < 0) {
+      bDayYear = bDayYear - 1;
+      bDayMonth = bDayMonth + 12;
+    }
+    let monthDiff = bDayMonth - nowMonth;
+    // console.log('monthDiff', monthDiff);
+
+    if (daysDiff === this.monthLength(bDayMonth,bDayYear)){
+      daysDiff = 0;
+      monthDiff = monthDiff + 1;
+    }
+
+    if (monthDiff === 12) {
+      monthDiff = 0;
+    // yearDiff = yearDiff + 1;
+    }
+    if ((daysToEndOfThisMonth !== this.monthLength(nowMonth,nowYear))
+      &&(bDayDay - 1 === this.monthLength(bDayMonth,bDayYear))){
+      daysDiff = daysToEndOfThisMonth;
+    }
+
+    console.log('this many months', monthDiff, 'this many days', daysDiff);
+    if (monthDiff === 1 && daysDiff === 1){
+      return  `${monthDiff} month and ${daysDiff} day until next birthday`;
+    } else if (monthDiff === 1 && daysDiff >= 1){
+      return `${monthDiff} month and ${daysDiff} days until next birthday`;
+    } else if (monthDiff > 1 && daysDiff === 1){
+      return `${monthDiff} months and ${daysDiff} day until next birthday`;
+    } else {
+      return `${monthDiff} months and ${daysDiff} days until next birthday`;
+    }
+
 
   }
 
 
   render() {
     console.log(this.props);
-    const { image, name, dob, rating } = this.props.person.personData;
+    const { image, name, rating } = this.props.person.personData;
     const {
       containerStyle,
       imageStyle,
@@ -81,6 +136,7 @@ export default class NameShow extends React.Component {
       imageContainerStyle
     } = styles;
     return (
+      <View>
       <Card>
         <CardSection>
           <View style={containerStyle}>
@@ -100,9 +156,10 @@ export default class NameShow extends React.Component {
         <CardSection>
           <View style={containerStyle}>
             <Text style={ageStyle}>{this.findAge()} years old</Text>
-            <Text style={birthdayStyle}> {this.untilNextBirthday()} x months and x days until next birthday</Text>
+            <Text style={birthdayStyle}> {this.untilNextBirthday()}</Text>
           </View>
         </CardSection>
+
         <CardSection>
           <View style={containerStyle}>
             <Text style={ratingStyle}>Rating: {rating}</Text>
@@ -114,6 +171,7 @@ export default class NameShow extends React.Component {
           </BigButton>
         </CardSection>
       </Card>
+      </View>
     );
   }
 }
@@ -124,6 +182,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+
   imageStyle: {
     margin: 5,
     height: 200,
