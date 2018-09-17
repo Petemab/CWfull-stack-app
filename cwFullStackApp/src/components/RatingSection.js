@@ -10,6 +10,8 @@ class RatingSection extends Component {
     this.state = { rating: this.props.rating, editMode: false };
   }
 
+
+
   toggleEditMode = () => {
     this.setState({ editMode: true});
     // console.log(this.state.rating);
@@ -40,21 +42,30 @@ class RatingSection extends Component {
 
 
   render() {
+    const {
+      ratingBox,
+      ratingTextStyle,
+      buttonStyle,
+      buttonTextStyle,
+      editButtons,
+      cancelButtonStyle,
+      saveButtonStyle
+    } = styles;
 
     if(!this.state.editMode){
       return (
 
         <View>
-          <View style={styles.ratingBox}>
-            <Text style={styles.ratingTextStyle}>Rating:   </Text>
-            <Text style={styles.ratingTextStyle}>{this.state.rating}</Text>
+          <View style={ratingBox}>
+            <Text style={ratingTextStyle}>Rating:   </Text>
+            <Text style={ratingTextStyle}>{this.state.rating}</Text>
           </View>
           <View>
-            <TouchableOpacity style={styles.buttonStyle}
+            <TouchableOpacity style={buttonStyle}
               onPress={ this.toggleEditMode }
             >
               <View >
-                <Text style={styles.buttonTextStyle}>Edit</Text>
+                <Text style={buttonTextStyle}>Edit</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -65,31 +76,31 @@ class RatingSection extends Component {
     if(this.state.editMode){
       return (
         <View>
-          <View style={styles.ratingBox}>
-            <Text style={styles.ratingTextStyle}>Rating:   </Text>
+          <View style={ratingBox}>
+            <Text style={ratingTextStyle}>Rating:   </Text>
             <TouchableOpacity
               onPress={() => this.decreaseRating(1)}>
-              <Text style={styles.editButtons}> -    </Text>
+              <Text style={editButtons}> -    </Text>
             </TouchableOpacity>
-            <Text style={styles.ratingTextStyle}>{this.state.rating}</Text>
+            <Text style={ratingTextStyle}>{this.state.rating}</Text>
             <TouchableOpacity
               onPress={() => this.incrementRating(1)}>
-              <Text style={styles.editButtons}>    + </Text>
+              <Text style={editButtons}>    + </Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.ratingBox}>
+          <View style={ratingBox}>
             <TouchableOpacity
-              style={styles.cancelButtonStyle}
+              style={cancelButtonStyle}
               onPress={() => this.cancelNewRating()}>
               <Text
-                style={styles.buttonTextStyle}
+                style={buttonTextStyle}
               >Cancel</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={styles.saveButtonStyle}
+              style={saveButtonStyle}
               onPress={() => this.saveNewRating()}>
               <Text
-                style={styles.buttonTextStyle}
+                style={buttonTextStyle}
               >Save</Text>
             </TouchableOpacity>
 
@@ -104,9 +115,6 @@ class RatingSection extends Component {
 
 
 const styles = StyleSheet.create({
-  viewStyle: {
-
-  },
   ratingTextStyle: {
     fontSize: 18,
     fontWeight: '500'
@@ -133,10 +141,6 @@ const styles = StyleSheet.create({
   ratingBox: {
     flexDirection: 'row',
     justifyContent: 'center'
-  },
-  editButtonsView: {
-    flexDirection: 'row',
-    justifyContent: 'space-around'
   },
   editButtons: {
     fontSize: 20,
