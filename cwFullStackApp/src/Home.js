@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 
 
@@ -28,7 +28,7 @@ class Home extends Component{
       <View style={styles.container}>
         <Text>A Full Stack Project for CW by Pete Bennett</Text>
         <Text>Using React Native, Node.js, Express and Firebase</Text>
-        <Button style={styles.buttonStyle}
+        <TouchableOpacity style={styles.buttonStyle}
           onPress={() => {
             Navigation.push(this.props.componentId, {
               component: {
@@ -36,8 +36,9 @@ class Home extends Component{
               }
             }, console.log('props2', this.props));
           }}
-          title="Tap Here To Start"
-        />
+        >
+          <Text style={styles.buttonTextStyle}>Tap Here To start</Text>
+        </TouchableOpacity>
 
       </View>
     );
@@ -46,15 +47,23 @@ class Home extends Component{
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    width: 350,
-    height: 55,
-    backgroundColor: '#42A5F5',
-    margin: 10,
-    padding: 8,
-    color: 'white',
-    borderRadius: 14,
-    fontSize: 18,
-    fontWeight: '500'
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 300,
+    marginTop: 20,
+    marginLeft: 5,
+    marginRight: 5,
+    height: 45,
+    backgroundColor: '#007aff',
+    borderRadius: 5
+  },
+  buttonTextStyle: {
+    alignSelf: 'center',
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingTop: 10,
+    paddingBottom: 10
   },
   container: {
     flex: 1,

@@ -22,6 +22,20 @@ class RatingSection extends Component {
     this.setState({ rating: this.state.rating - num });
   }
 
+  saveNewRating = () => {
+    this.setState({
+      editMode: false,
+      rating: this.state.rating
+    });
+  }
+
+  cancelNewRating = () => {
+    this.setState({
+      editMode: false,
+      rating: this.props.rating
+    });
+  }
+
 
 
 
@@ -54,16 +68,30 @@ class RatingSection extends Component {
           <View style={styles.ratingBox}>
             <Text style={styles.ratingTextStyle}>Rating:   </Text>
             <TouchableOpacity
-              onPress={(event) => this.decreaseRating(1, event)}>
+              onPress={() => this.decreaseRating(1)}>
               <Text style={styles.editButtons}> -    </Text>
             </TouchableOpacity>
             <Text style={styles.ratingTextStyle}>{this.state.rating}</Text>
             <TouchableOpacity
-              onPress={(event) => this.incrementRating(1, event)}>
+              onPress={() => this.incrementRating(1)}>
               <Text style={styles.editButtons}>    + </Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.editButtonsView}>
+          <View style={styles.ratingBox}>
+            <TouchableOpacity
+              style={styles.cancelButtonStyle}
+              onPress={() => this.cancelNewRating()}>
+              <Text
+                style={styles.buttonTextStyle}
+              >Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.saveButtonStyle}
+              onPress={() => this.saveNewRating()}>
+              <Text
+                style={styles.buttonTextStyle}
+              >Save</Text>
+            </TouchableOpacity>
 
           </View>
 
@@ -105,13 +133,35 @@ const styles = StyleSheet.create({
   },
   editButtonsView: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'space-around'
   },
   editButtons: {
     fontSize: 20,
     fontWeight: '800',
     marginBottom: 5,
     alignItems: 'center'
+  },
+  cancelButtonStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 100,
+    marginTop: 20,
+    marginLeft: 5,
+    marginRight: 10,
+    height: 45,
+    backgroundColor: '#808080',
+    borderRadius: 5
+  },
+  saveButtonStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 100,
+    marginTop: 20,
+    marginLeft: 10,
+    marginRight: 5,
+    height: 45,
+    backgroundColor: '#007aff',
+    borderRadius: 5
   }
 });
 

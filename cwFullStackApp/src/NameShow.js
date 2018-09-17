@@ -136,7 +136,7 @@ export default class NameShow extends React.Component {
       imageContainerStyle
     } = styles;
     return (
-
+    
       <Card>
         <CardSection>
           <View style={containerStyle}>
@@ -167,6 +167,7 @@ export default class NameShow extends React.Component {
           </View>
         </CardSection>
       </Card>
+
 
     );
   }
