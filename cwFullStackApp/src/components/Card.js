@@ -14,6 +14,7 @@ const Card = (props) => {
 
 const styles = {
   containerStyle: {
+    backgroundColor: '#F8F0F2',
     borderWidth: 1,
     borderRadius: 2,
     borderColor: '#ddd',
@@ -25,7 +26,8 @@ const styles = {
     elevation: 1,
     marginLeft: 5,
     marginRight: 5,
-    marginTop: 10
+    marginTop: 5,
+    marginBottom: 5
   }
 };
 export default Card;

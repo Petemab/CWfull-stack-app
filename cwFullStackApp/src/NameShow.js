@@ -136,37 +136,38 @@ export default class NameShow extends React.Component {
       imageContainerStyle
     } = styles;
     return (
-    
-      <Card>
-        <CardSection>
-          <View style={containerStyle}>
-            <View style={imageContainerStyle}>
-              <Image
-                style={imageStyle}
-                source={{ uri: image }}
+      <View style ={styles.viewStyle}>
+        <Card>
+          <CardSection>
+            <View style={containerStyle}>
+              <View style={imageContainerStyle}>
+                <Image
+                  style={imageStyle}
+                  source={{ uri: image }}
+                />
+              </View>
+            </View>
+          </CardSection>
+          <CardSection>
+            <View style={containerStyle}>
+              <Text style={nameStyle}>{name}</Text>
+            </View>
+          </CardSection>
+          <CardSection>
+            <View style={containerStyle}>
+              <Text style={ageStyle}>{this.findAge()} years old</Text>
+              <Text style={birthdayStyle}> {this.untilNextBirthday()}</Text>
+            </View>
+          </CardSection>
+          <CardSection>
+            <View style={containerStyle}>
+              <RatingSection
+                rating={rating}
               />
             </View>
-          </View>
-        </CardSection>
-        <CardSection>
-          <View style={containerStyle}>
-            <Text style={nameStyle}>{name}</Text>
-          </View>
-        </CardSection>
-        <CardSection>
-          <View style={containerStyle}>
-            <Text style={ageStyle}>{this.findAge()} years old</Text>
-            <Text style={birthdayStyle}> {this.untilNextBirthday()}</Text>
-          </View>
-        </CardSection>
-        <CardSection>
-          <View style={containerStyle}>
-            <RatingSection
-              rating={rating}
-            />
-          </View>
-        </CardSection>
-      </Card>
+          </CardSection>
+        </Card>
+      </View>
 
 
     );
@@ -177,7 +178,19 @@ const styles = StyleSheet.create({
   containerStyle: {
     // flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 12
+  },
+  viewStyle: {
+    flex: 1,
+    backgroundColor: '#DCDCDC',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2},
+    shadowOpacity: 0.2,
+    elevation: 2,
+    position: 'relative'
   },
   imageStyle: {
     margin: 5,

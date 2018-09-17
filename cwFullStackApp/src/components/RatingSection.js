@@ -104,6 +104,9 @@ class RatingSection extends Component {
 
 
 const styles = StyleSheet.create({
+  viewStyle: {
+
+  },
   ratingTextStyle: {
     fontSize: 18,
     fontWeight: '500'
@@ -138,28 +141,27 @@ const styles = StyleSheet.create({
   editButtons: {
     fontSize: 20,
     fontWeight: '800',
-    marginBottom: 5,
     alignItems: 'center'
   },
   cancelButtonStyle: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 100,
+    width: 140,
     marginTop: 20,
     marginLeft: 5,
     marginRight: 10,
-    height: 45,
+    height: 40,
     backgroundColor: '#808080',
     borderRadius: 5
   },
   saveButtonStyle: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 100,
+    width: 140,
     marginTop: 20,
     marginLeft: 10,
     marginRight: 5,
-    height: 45,
+    height: 40,
     backgroundColor: '#007aff',
     borderRadius: 5
   }
