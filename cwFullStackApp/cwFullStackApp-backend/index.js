@@ -1,9 +1,10 @@
 require('dotenv').config();
+const env = process.env.NODE_ENV || 'dev';
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 //---server data
-const port = 3000;
+const port = process.env.PORT || 3000;
 const people = require('./routes/people');
 
 //---json-parser config
