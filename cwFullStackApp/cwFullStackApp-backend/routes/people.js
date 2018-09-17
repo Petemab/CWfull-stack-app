@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// import { FIRESTORE_SERVICE_ACCOUNT_KEY } from 'react-native-dotenv';
 
 // this first bit is all taken fromthe firestore docs
 
@@ -23,6 +24,16 @@ const db = admin.firestore();
 db.settings({ timestampsInSnapshots: true });
 
 const peopleCollection = db.collection('people');
+
+// peopleCollection.add({
+//   name: 'Zoe Zinger',
+//   dob: '26/09/1977',
+//   rating: 989,
+//   image: '../assets/avatar-1606914_960_720.png'}).then( ref => {
+//   console.log('Added document with ID: ', ref.id);
+// });
+
+
 
 
 //this should get all the people
