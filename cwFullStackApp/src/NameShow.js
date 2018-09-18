@@ -5,7 +5,8 @@ import {
   Text,
   Button,
   Image,
-  StyleSheet
+  StyleSheet,
+  ActivityIndicator
 } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import Card from './components/Card';
@@ -13,6 +14,9 @@ import CardSection from './components/CardSection';
 import RatingSection from './components/RatingSection';
 
 export default class NameShow extends React.Component {
+
+  state={ loaded: false };
+
   static get options() {
     return {
       topBar: {
@@ -23,14 +27,18 @@ export default class NameShow extends React.Component {
     };
   }
 
-  state={person: []};
 
-  componentDidMount(){
+
+  componentWillMount(){
     return fetch(`http://localhost:3000/api/people/${this.props.person.docID}`)
       .then((res) => res.json())
       .then((resJson) => {
         this.setState({
-          person: resJson
+          name: resJson.personData.name,
+          dob: resJson.personData.dob,
+          image: resJson.personData.image,
+          rating: resJson.personData.rating,
+          loaded: true
         });
       })
       .catch((error) => {
@@ -38,10 +46,10 @@ export default class NameShow extends React.Component {
       });
   }
 
-
+  
   findAge(){
     const now = Date.now();
-    const splitDob = this.state.person.personData.dob.split('/');
+    const splitDob = this.state.dob.split('/');
     // console.log('splitDob ---->', splitDob);
     const aDate = new Date(splitDob[2], splitDob[1] -1, splitDob[0]);
     // console.log('new date', aDate);
@@ -82,14 +90,14 @@ export default class NameShow extends React.Component {
     // console.log('nowYear --->', nowYear);
     // console.log('nowMonth --->', nowMonth);
     // console.log('nowDay --->', nowDay);
-    const splitDob = this.state.person.personData.dob.split('/');
+    const splitDob = this.state.dob.split('/');
     const splitMonth = splitDob[1] -1;
     birthday.setDate(splitDob[0]);
     birthday.setMonth(splitMonth);
     if (birthday < now) {
       birthday.setFullYear(birthday.getFullYear()+1);
     }
-    console.log(`${this.state.person.personData.name}'s birthday is`, birthday);
+    console.log(`${this.state.name}'s birthday is`, birthday);
     let bDayMonth = birthday.getMonth();
     let bDayDay = birthday.getDate();
     let bDayYear = birthday.getFullYear();
@@ -138,16 +146,16 @@ export default class NameShow extends React.Component {
   }
 
 
-  render() {
-    console.log(this.state);
-    const { image, name, rating } = this.state.person.personData;
+  renderShow() {
+    console.log('props----->', this.props.person.docID);
+    console.log('state ----->', this.state);
+    const { image, name, rating } = this.state;
     const {
       containerStyle,
       imageStyle,
       nameStyle,
       ageStyle,
       birthdayStyle,
-      ratingStyle,
       imageContainerStyle
     } = styles;
     return (
@@ -187,6 +195,30 @@ export default class NameShow extends React.Component {
 
     );
   }
+
+  render(){
+    console.log('state ----->', this.state.dob);
+    if(!this.state.loaded){
+      return(
+        <View>
+          <ActivityIndicator />
+        </View>
+      );
+    }
+
+    if(this.state.loaded){
+      return(
+
+        <View style={styles.viewStyle}>
+
+          {this.renderShow()}
+        </View>
+
+      );
+    }
+  }
+
+
 }
 
 const styles = StyleSheet.create({
