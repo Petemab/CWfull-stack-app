@@ -23,17 +23,25 @@ const db = admin.firestore();
 
 db.settings({ timestampsInSnapshots: true });
 
-const peopleCollection = db.collection('people');
+// const storage = admin.storage();
+// // Create a storage reference from our storage service
+// const storageRef = storage.ref();
+//
+// const female1 = storageRef('female1.png');
 
+const peopleCollection = db.collection('people');
+//
 // peopleCollection.add({
-//   name: 'Zoe Zinger',
+//   name: 'AAA AAA',
 //   dob: '26/09/1977',
 //   rating: 989,
-//   image: '../assets/avatar-1606914_960_720.png'}).then( ref => {
-//   console.log('Added document with ID: ', ref.id);
-// });
+//   image: female1
+// })
+//   .then( ref => {
+//     console.log('Added document with ID: ', ref.id);
+//   });
 
-
+// gs://cw-project-db.appspot.com/female1.png
 
 
 //this should get all the people

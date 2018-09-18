@@ -46,7 +46,7 @@ export default class NameShow extends React.Component {
       });
   }
 
-  
+
   findAge(){
     const now = Date.now();
     const splitDob = this.state.dob.split('/');
@@ -159,38 +159,38 @@ export default class NameShow extends React.Component {
       imageContainerStyle
     } = styles;
     return (
-      <View style ={styles.viewStyle}>
-        <Card>
-          <CardSection>
-            <View style={containerStyle}>
-              <View style={imageContainerStyle}>
-                <Image
-                  style={imageStyle}
-                  source={{ uri: image }}
-                />
-              </View>
-            </View>
-          </CardSection>
-          <CardSection>
-            <View style={containerStyle}>
-              <Text style={nameStyle}>{name}</Text>
-            </View>
-          </CardSection>
-          <CardSection>
-            <View style={containerStyle}>
-              <Text style={ageStyle}>{this.findAge()} years old</Text>
-              <Text style={birthdayStyle}> {this.untilNextBirthday()}</Text>
-            </View>
-          </CardSection>
-          <CardSection>
-            <View style={containerStyle}>
-              <RatingSection
-                rating={rating}
+
+      <Card>
+        <CardSection>
+          <View style={containerStyle}>
+            <View style={imageContainerStyle}>
+              <Image
+                style={imageStyle}
+                source={{ uri: image }}
               />
             </View>
-          </CardSection>
-        </Card>
-      </View>
+          </View>
+        </CardSection>
+        <CardSection>
+          <View style={containerStyle}>
+            <Text style={nameStyle}>{name}</Text>
+          </View>
+        </CardSection>
+        <CardSection>
+          <View style={containerStyle}>
+            <Text style={ageStyle}>{this.findAge()} years old</Text>
+            <Text style={birthdayStyle}> {this.untilNextBirthday()}</Text>
+          </View>
+        </CardSection>
+        <CardSection>
+          <View style={containerStyle}>
+            <RatingSection
+              rating={rating}
+            />
+          </View>
+        </CardSection>
+      </Card>
+
 
 
     );
