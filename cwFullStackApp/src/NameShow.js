@@ -23,10 +23,25 @@ export default class NameShow extends React.Component {
     };
   }
 
+  state={person: []};
+
+  componentDidMount(){
+    return fetch(`http://localhost:3000/api/people/${this.props.person.docID}`)
+      .then((res) => res.json())
+      .then((resJson) => {
+        this.setState({
+          person: resJson
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
 
   findAge(){
     const now = Date.now();
-    const splitDob = this.props.person.personData.dob.split('/');
+    const splitDob = this.state.person.personData.dob.split('/');
     // console.log('splitDob ---->', splitDob);
     const aDate = new Date(splitDob[2], splitDob[1] -1, splitDob[0]);
     // console.log('new date', aDate);
@@ -67,14 +82,14 @@ export default class NameShow extends React.Component {
     // console.log('nowYear --->', nowYear);
     // console.log('nowMonth --->', nowMonth);
     // console.log('nowDay --->', nowDay);
-    const splitDob = this.props.person.personData.dob.split('/');
+    const splitDob = this.state.person.personData.dob.split('/');
     const splitMonth = splitDob[1] -1;
     birthday.setDate(splitDob[0]);
     birthday.setMonth(splitMonth);
     if (birthday < now) {
       birthday.setFullYear(birthday.getFullYear()+1);
     }
-    console.log(`${this.props.person.personData.name}'s birthday is`, birthday);
+    console.log(`${this.state.person.personData.name}'s birthday is`, birthday);
     let bDayMonth = birthday.getMonth();
     let bDayDay = birthday.getDate();
     let bDayYear = birthday.getFullYear();
@@ -124,8 +139,8 @@ export default class NameShow extends React.Component {
 
 
   render() {
-    console.log(this.props);
-    const { image, name, rating } = this.props.person.personData;
+    console.log(this.state);
+    const { image, name, rating } = this.state.person.personData;
     const {
       containerStyle,
       imageStyle,

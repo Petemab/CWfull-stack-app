@@ -35,7 +35,7 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* cwFullStackAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* cwFullStackAppTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		3DE4EE0A2146B70300A429A0 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE4EE072146B66600A429A0 /* libReactNativeNavigation.a */; };
+		3DE4EE0A2146B70300A429A0 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE4EE072146B66600A429A0 /* libReactNativeNavigation.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		3DE4EE182147C55E00A429A0 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
