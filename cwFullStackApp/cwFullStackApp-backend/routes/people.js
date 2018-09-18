@@ -42,12 +42,12 @@ router.get('/people',(req, res , next) =>{
   const allPeople = [];
 
   peopleCollection.get()
-    .then(snapshot => {
+    .then(person => {
       //for each document return the data
-      snapshot.forEach(doc => {
+      person.forEach(doc => {
         allPeople.push({
           'docID': doc.id,
-          'personData': doc.data()
+          'name': doc.data().name
         });
       });
       // respond with the array created

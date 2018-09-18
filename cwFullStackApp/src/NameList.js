@@ -105,7 +105,7 @@ class NameList extends Component {
               }
             });
           }}>
-          <Text style={styles.textStyle}>{ person.personData.name}</Text>
+          <Text style={styles.textStyle}>{ person.name}</Text>
         </TouchableOpacity>
       </View>
     );
