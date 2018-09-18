@@ -3,12 +3,11 @@ import React from 'react';
 import {
   View,
   Text,
-  Button,
   Image,
   StyleSheet,
   ActivityIndicator
 } from 'react-native';
-import {Navigation} from 'react-native-navigation';
+// import {Navigation} from 'react-native-navigation';
 import Card from './components/Card';
 import CardSection from './components/CardSection';
 import RatingSection from './components/RatingSection';
@@ -102,7 +101,7 @@ export default class NameShow extends React.Component {
     let bDayDay = birthday.getDate();
     let bDayYear = birthday.getFullYear();
     // console.log(bDayMonth, bDayDay, bDayYear);
-    let daysToEndOfThisMonth = this.monthLength(nowMonth,nowYear) - nowDay;
+    const daysToEndOfThisMonth = this.monthLength(nowMonth,nowYear) - nowDay;
     // console.log(daysToEndOfThisMonth);
     if (bDayDay - nowDay < 0) {
       bDayMonth = bDayMonth - 1;

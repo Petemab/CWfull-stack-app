@@ -26,6 +26,12 @@ db.settings({ timestampsInSnapshots: true });
 const storage = admin.storage();
 // Create a storage reference from our storage service
 
+
+
+// const storageRef = storage.ref('female1.png');
+// storageRef.getDownloadURL().then(function(url) {
+//   console.log('url--->', url);
+// });
 //
 // const female1 = storageRef('female1.png');
 
