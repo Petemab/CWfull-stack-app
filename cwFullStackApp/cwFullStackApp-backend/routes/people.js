@@ -23,9 +23,9 @@ const db = admin.firestore();
 
 db.settings({ timestampsInSnapshots: true });
 
-// const storage = admin.storage();
-// // Create a storage reference from our storage service
-// const storageRef = storage.ref();
+const storage = admin.storage();
+// Create a storage reference from our storage service
+
 //
 // const female1 = storageRef('female1.png');
 
