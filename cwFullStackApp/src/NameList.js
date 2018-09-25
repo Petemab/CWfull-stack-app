@@ -73,7 +73,7 @@ class NameList extends Component {
   // add axios request here to fetch the data from api when back end ready
   //tried calling my '/api/people' but it's not working
   componentDidMount(){
-    return fetch('http://localhost:3000/api/people')
+    return fetch('https://cwbackend.herokuapp.com/api/people/')
       .then((res) => res.json())
       .then((resJson) => {
         this.setState({

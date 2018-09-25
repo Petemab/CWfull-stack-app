@@ -29,7 +29,7 @@ export default class NameShow extends React.Component {
 
 
   componentWillMount(){
-    return fetch(`http://localhost:3000/api/people/${this.props.person.docID}`)
+    return fetch(`https://cwbackend.herokuapp.com/api/people/${this.props.person.docID}`)
       .then((res) => res.json())
       .then((resJson) => {
         this.setState({
@@ -205,6 +205,7 @@ export default class NameShow extends React.Component {
       );
     }
 
+    // don't need second if statement 
     if(this.state.loaded){
       return(
 
