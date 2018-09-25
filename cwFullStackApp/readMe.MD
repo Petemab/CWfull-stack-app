@@ -27,7 +27,7 @@ After the initial build I then rebuilt the app using Redux:
 
 ### Project Brief
 
-##### Technical Requirements and Necessary Deliverables
+#### Technical Requirements and Necessary Deliverables
 
 * Mobile app shows a scrolling list view of people’s names, retrieved from back end
 * Touching a person retrieves extra data from the server about them
@@ -84,24 +84,42 @@ For this project I have used the following technologies:
 * GitHub
 * Heroku
 
+ ---
 
 ### Screenshots
 
 Some screenshots of the finished app.
 
-Home Page:
+##### Home Page:
 ![.HomePage](./src/assets/HomePage.png)
 
-Scrolling List View page:
+
+##### Scrolling List View page:
 ![.ListView](./src/assets/listView.png)
 
-Details Page:
+
+##### Details Page:
 ![.detailView](./src/assets/detailView.png)
 
-Details Page in edit mode:
+
+##### Details Page in edit mode:
 ![.editmode](./src/assets/editmode.png)
 
+ ---
 
 ### Challenges and Problems
 
+* I had no experience with React Native before attempting this project. It was fun getting to know the framework and learning to deal with using Xcode.
+
+* The hardest part of the setting up was React Native Navigation. Trying to get this to function initially was quite tricky, but once I had wrapped my head around it, it was fairly straightforward.
+
+* Styling in React Native took a little getting used to and I look forward to getting more practice with this.
+
+* Some of the date manipulation was challenging but it was fun trying to do it with just vanilla JS.
+
+
 ### Wins
+
+* I was pleased with the way it turned out. I managed to fulfil the brief including limiting the data returned and on the list view and ensuring the images were coming from the firebase database rather than random urls.
+
+* It was also fun getting to learn Redux, which I had no experience of and adding this to the project - please see link at top for this version.
